@@ -26,6 +26,12 @@ class TodoList extends Component
         session()->flash("success","Todo created successfully");
     }
 
+    public function toggle($id){
+        $todo = Todo::find($id);
+        $todo->completed = !$todo->completed;
+        $todo->save();
+    }
+
     public function render()
     {
         $data['todos'] = Todo::latest()->where("name","like","%{$this->search}%")->paginate(5);
