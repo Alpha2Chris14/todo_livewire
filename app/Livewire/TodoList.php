@@ -15,6 +15,9 @@ class TodoList extends Component
 
     public $search;
 
+    public $editingTodoID;
+    public $editingTodoName;
+
     public function create(){
         // validate the input
         $validated = $this->validateOnly('name');
@@ -40,5 +43,10 @@ class TodoList extends Component
 
     public function delete($id){
         Todo::find($id)->delete();
+    }
+
+    public function edit($id){
+        $this->editingTodoID = $id;
+        $this->editingTodoName = Todo::find($id)->name;
     }
 }
