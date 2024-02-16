@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\todo;
+use Exception;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -10,12 +11,15 @@ use Livewire\WithPagination;
 class TodoList extends Component
 {
     use WithPagination;
+
     #[Rule("required|min:4|max:100")]
     public $name;
 
     public $search;
 
     public $editingTodoID;
+
+    #[Rule("required|min:4|max:100")]
     public $editingTodoName;
 
     public function create(){
@@ -27,6 +31,8 @@ class TodoList extends Component
         $this->reset();
         // send flash message
         session()->flash("success","Todo created successfully");
+
+        $this->resetPage();
     }
 
     public function toggle($id){
@@ -42,11 +48,30 @@ class TodoList extends Component
     }
 
     public function delete($id){
-        Todo::find($id)->delete();
+        try{
+            Todo::findOrFail($id)->delete();
+        }catch(Exception $e){
+            session()->flash('error','failed to delete todo');
+            return;
+        }
+
     }
 
     public function edit($id){
         $this->editingTodoID = $id;
         $this->editingTodoName = Todo::find($id)->name;
+    }
+
+    public function update(){
+        $this->validateOnly('editingTodoName');
+        $todo = Todo::find($this->editingTodoID);
+        $todo->name = $this->editingTodoName;
+        $todo->save();
+        $this->cancelEdit();
+        session()->flash("success","Todo updated successfully");
+    }
+
+    public function cancelEdit(){
+        $this->reset("editingTodoID","editingTodoName");
     }
 }
