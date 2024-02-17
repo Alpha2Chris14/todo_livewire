@@ -48,6 +48,14 @@
             @error('image')
             <p class="text-red-500 text-xs italic">{{$message}}.</p>
             @enderror
+            <div wire:loading wire:target='image'>
+                <div>
+                    <span class="flex h-3 w-3 pointer-events-none">
+                        <span class="animate-ping absolute inline-flex h-10 w-10 rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                      </span>
+                </div>
+            </div>
             @if ($image)
                 <img class="rounded w-20 h-20 mt-5 block" src="{{$image->temporaryUrl() }}" alt="">
             @endif
