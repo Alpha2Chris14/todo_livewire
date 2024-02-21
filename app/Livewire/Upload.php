@@ -10,7 +10,6 @@ use Livewire\Features\SupportFileUploads\WithFileUploads;
 
 class Upload extends Component
 {
-    /* handles file upload */
     use WithFileUploads;
 
     #[Rule("required|min:4")]
