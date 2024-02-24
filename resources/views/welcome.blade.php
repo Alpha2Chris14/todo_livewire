@@ -25,8 +25,14 @@
             </header>
         </div>
     </div>
-    <div id="content" class="mx-auto" style="max-width:500px;">
-        @livewire('upload')
+    <div id="content" class="flex">
+        <div class="w-3/4">
+            @livewire('userlist')
+        </div>
+        <div class="w-1/4"></div>
+        <div class="w-3/4">
+            @livewire('upload')
+        </div>
         {{-- @livewire('todo-list') --}}
     </div>
 
