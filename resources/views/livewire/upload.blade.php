@@ -61,8 +61,15 @@
             @endif
           </div>
 
+          <div wire:loading.delay>
+                <span class="flex h-3 w-3 pointer-events-none">
+                    <span class="animate-ping absolute inline-flex h-10 w-10 rounded-full bg-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                </span>
+          </div>
+
           <div class="flex items-center justify-between">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+            <button wire.loading.class="bg-red-500" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
               Sign Up
             </button>
 

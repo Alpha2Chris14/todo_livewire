@@ -25,6 +25,7 @@ class Upload extends Component
     public $image;
 
     public function register(){
+        sleep(20);
         $validated = $this->validate();
         if($this->image){
             $validated['image'] = $this->image->store("uploads","public");
