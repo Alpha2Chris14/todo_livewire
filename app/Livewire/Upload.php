@@ -25,16 +25,16 @@ class Upload extends Component
     public $image;
 
     public function register(){
-        sleep(20);
         $validated = $this->validate();
         if($this->image){
             $validated['image'] = $this->image->store("uploads","public");
         }
         $validated['password'] = Hash::make($this->password);
         $validated['name'] = $this->username;
-        User::create($validated);
+        $user = User::create($validated);
         $this->reset();
         session()->flash("success","user created succcessfully");
+        $this->dispatch('user-created',$user);
     }
     public function render()
     {
