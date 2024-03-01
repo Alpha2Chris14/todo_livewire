@@ -11,8 +11,11 @@ class Userlist extends Component
 {
     use WithPagination;
     public $count = 0;
-    #[On('user-created')]
-    public function updateList($user=null){}
+
+    #[On('user_created')]
+    public function updateList($user=null){
+        dd("Hello");
+    }
     public function render()
     {
         $data['users'] = User::latest()->paginate(3);

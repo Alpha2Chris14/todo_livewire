@@ -69,6 +69,10 @@
           </div>
 
           <div class="flex items-center justify-between">
+            <button type="button" @click="$dispatch('user_created')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                Refresh
+              </button>
+
             <button wire.loading.class="bg-red-500" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
               Sign Up
             </button>
