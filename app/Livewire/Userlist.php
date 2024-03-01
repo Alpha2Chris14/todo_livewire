@@ -10,6 +10,7 @@ use Livewire\WithPagination;
 class Userlist extends Component
 {
     use WithPagination;
+    public $count = 0;
     #[On('user-created')]
     public function updateList($user=null){}
     public function render()

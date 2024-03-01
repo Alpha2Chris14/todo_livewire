@@ -8,6 +8,20 @@
 
     <!-- Include Tailwind CSS via CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,7 +41,7 @@
         </div>
     </div>
     <div id="content" class="flex">
-        <div class="w-3/4">
+        <div class="w-3/4  ml-5 mt-5">
             @livewire('userlist')
         </div>
         <div class="w-1/4"></div>
